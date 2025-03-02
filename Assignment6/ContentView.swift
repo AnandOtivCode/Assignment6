@@ -8,46 +8,47 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @State private var isAlertShowing = false
-
     var body: some View {
-        VStack {
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundStyle(.tint)
-            Spacer()
-            Image("Anand").resizable().aspectRatio(contentMode: .fit).frame(width: 300, height:300).clipShape(Circle())
-            Spacer()
-            Text("Anand Otiv")
-                .font(.title)
-                .fontWeight(.heavy)
-                .multilineTextAlignment(.center)
-                .lineLimit(nil)
-            
-            Text("Program Of Study: Computer Programming")
-            Text("Year: 2026 \(Image(systemName: "graduationcap.fill"))")
-            Divider()
-            
-            Text("After I finish my diploma I'd like to work on machine learning and data science. I find data very interesting and I'd like to contribute a part to the Artificial Intelligence field of science some day.")
-            // computermouse.fill
-            
-            Button("What is my favourite course??", systemImage: "computermouse.fill"){
-                isAlertShowing.toggle()
+        ZStack{
+            //Displays background color
+            Color("Background Color").ignoresSafeArea(edges: .all)
+            VStack {
+                Spacer()
+                //Displays image of Anand
+                Image("Anand").resizable().aspectRatio(contentMode: .fit).frame(width: 300, height:300).clipShape(Circle())
+                Spacer()
+                //Heading Name Text
+                Text("Anand Otiv")
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 10.0)
+                //Display Programs of study and graduating year
+                Text("Program Of Study: Computer Programming")
+                    .font(.callout)
+                Text("Year: 2026 \(Image(systemName: "graduationcap.fill"))")
+                Divider()
+                Spacer()
+                
+                //Bio
+                Text("After I finish my diploma I'd like to work on machine learning and data science. I find data very interesting and I'd like to contribute a valuable part to the Artificial Intelligence field of Science some day.")
+                    .font(.subheadline)
+                    .fontWeight(.heavy)
+                    .padding(.all, 12.0)
+                    .background(Color.mint)
+                    .multilineTextAlignment(.center).clipShape(RoundedRectangle(cornerRadius: 10))
+                Spacer()
+                Button("Ok", systemImage: "computermouse.fill"){
+                    isAlertShowing.toggle()
+                }.buttonStyle(.borderedProminent)
+                    .alert("My favourite course is MAD103 !", isPresented: $isAlertShowing) {
+                        
+                    }
             }
             
-            .alert("MAD103", isPresented: $isAlertShowing) {
-                //
-            }
-            
-            
-
-//            Image(systemName: )
-           
-            
+            .padding()
         }
-        
-        .padding()
     }
 }
 
